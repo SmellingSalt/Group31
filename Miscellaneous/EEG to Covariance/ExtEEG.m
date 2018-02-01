@@ -1,9 +1,14 @@
-function[X]= ExtEEG(s,h)
+%This function returns a EEG data cell 'X' after reading it from the .gdf
+%file. From the .gdf file, the classes present are first identified then
+%filled as (class x trialNo.)
+%Each cell element is (N x 8) N=no. of samples, 8 channels
 
-%[s,h]=sload('record-[2012.07.06-19.06.14].gdf'); %Possible inputs {classes,s,h}
+function[X]= ExtEEG()
+
+%Load .gdf file and extract data information
+[s,h]=sload('record-[2012.07.06-19.06.14].gdf'); %Possible inputs {classes,s,h}
 events=h.EVENT.TYP(:,1); 
 samples=h.EVENT.POS(:,1);
-
 
 %% Template
 % Runs a loop to create the template of 31 classes
@@ -26,14 +31,13 @@ clss=zeros(31,1); %Blank array holding 31 zeros
        end 
  end
 classes=clss(clss~=0);     %All non zero classes are stored in the main variable, classes
-ClssLnth=length(classes);  %Number of classes in data
+ClassLnth=length(classes);  %Number of classes in data
  
-
 %% Filling the cell
  % Classes in the columns and Trials on the rows
  j=1;
  k=1; %Helps store trials in the column of the cell
-  for i=1:ClssLnth
+  for i=1:ClassLnth
     while(j<length(events))
         if(classes(i,1)==events(j,1))
             strti=j+1;   %Supposed to be index of starting sample
