@@ -4,7 +4,6 @@ function[X]= ExtEEG(s,h)
 events=h.EVENT.TYP(:,1); 
 samples=h.EVENT.POS(:,1);
 
-
 %% Template
 % Runs a loop to create the template of 31 classes
 template=zeros(31,1);
@@ -28,7 +27,6 @@ clss=zeros(31,1); %Blank array holding 31 zeros
 classes=clss(clss~=0);     %All non zero classes are stored in the main variable, classes
 ClssLnth=length(classes);  %Number of classes in data
  
-
 %% Filling the cell
  % Classes in the columns and Trials on the rows
  j=1;
