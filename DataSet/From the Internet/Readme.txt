@@ -1,2 +1,4 @@
-All datasets collected from the internet must be organized here.
-Please arrange it in folders, according to its source, if possible.
+All datasets collected from the internet is organized here.
+Each folder is a different source.
+Link from where the dataset is downloaded in the LINK.txt
+
