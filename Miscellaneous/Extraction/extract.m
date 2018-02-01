@@ -24,7 +24,6 @@ clss=zeros(31,1); %Blank array holdin 31 zeros
 classes=clss(clss~=0);     %All non zero classes are stored in the main variable, classes
 ClssLnth=length(classes);  %Number of classes in data
  
-
 %% Filling the cell
  % Classes in the columns and Trials on the rows
  j=1;
