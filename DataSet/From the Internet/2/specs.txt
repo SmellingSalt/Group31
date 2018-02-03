@@ -1,0 +1,21 @@
+EEG SSVEP Dataset I	
+
+EEG signals with 256 channels captured from 11 subjects executing a SSVEP-based experimental protocol. Five different frequencies (6.66, 7.50, 8.57, 10.00 and 12.00 Hz) presented in isolation have been used for the visual stimulation. The EGI 300 Geodesic EEG System (GES 300), using a 256-channel HydroCel Geodesic Sensor Net (HCGSN) and a sampling rate of 250 Hz has been used for capturing the signals.
+
+
+EEG SSVEP Dataset II	
+
+EEG signals with 256 channels captured from 11 subjects executing a SSVEP-based experimental protocol. Five different frequencies (6.66, 7.50, 8.57, 10.00 and 12.00 Hz) presented simultaneously have been used for the visual stimulation. The EGI 300 Geodesic EEG System (GES 300), using a 256-channel HydroCel Geodesic Sensor Net (HCGSN) and a sampling rate of 250 Hz has been used for capturing the signals.
+
+
+EEG SSVEP Dataset III	
+
+EEG signals with 14 channels captured from 11 subjects executing a SSVEP-based experimental protocol. Five different frequencies (6.66, 7.50, 8.57, 10.00 and 12.00 Hz) presented simultaneously have been used for the visual stimulation, and the Emotiv EPOC, using 14 wireless channels has been used for capturing the signals.
+
+
+
+
+MAMEM Phase I Dataset – A dataset for multimodal human-computer interaction using biosignals and eye tracking information
+
+	
+A dataset that combines multimodal biosignals and eye tracking information gathered under a human-computer interaction framework. The dataset was developed in the vein of the MAMEM project that aims to endow people with motor disabilities with the ability to edit and author multimedia content through mental commands and gaze activity. The dataset includes EEG, eye-tracking, and physiological (GSR and Heart rate) signals along with demographic, clinical and behavioral data collected from 36 individuals (18 able-bodied and 18 motor-impaired). Data were collected during the interaction with specifically designed interface for web browsing and multimedia content manipulation and during imaginary movement tasks. Alongside these data we also include evaluation reports both from the subjects and the experimenters as far as the experimental procedure and collected dataset are concerned. We believe that the presented dataset will contribute towards the development and evaluation of modern human-computer interaction systems that would foster the integration of people with severe motor impairments back into society.
