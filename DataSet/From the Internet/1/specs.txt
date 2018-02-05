@@ -1,0 +1,48 @@
+Steady-State Visual Evoked Potentials (EEG data):
+
+===================
+Copyright: 
+Hovagim Bakardjian, 2011
+Email: hova@brain.riken.jp
+Email: hova@bakardjian.com
+
+All experiments were performed using facilities at:
+RIKEN, Brain Science Institute, Laboratory for Advanced Brain Signal Processing
+===================
+
+
+
+EXPERIMENTAL DESIGN:
+
+EEG system: 128-channel BIOSEMI (active electrodes, see http://www.biosemi.com for cap layout)
+Sampling rate: 256 Hz
+Monitor vertical refresh rate: 170 Hz
+Eye-monitor distance: ~90 cm
+
+15 seconds of SSVEP available for 4 subjects.
+     |---------------|
+-----|    SSVEP      |----- 
+The SSVEP ONSET  point is at second  5 from beginning of the data.
+The SSVEP OFFSET point is at second 20 from beginning of the data.
+
+3 SSVEP stimulation frequencies available (8 Hz, 14 Hz, 28 Hz). 
+See corresponding text files for the precise frequencies (very small deviations).
+
+6 trials available for each SSVEP frequency.
+
+
+
+
+===================
+IMPORTANT NOTICES:
+
+1. Copyright holders for this database are RIKEN-LABSP and Dr. Hovagim Bakardjian.
+
+2. By using this data for any scientific publication, you agree to include a reference to the following original work:
+Bakardjian H, Tanaka T, Cichocki A, Optimization of SSVEP brain responses with application to eight-command Brain–Computer Interface, Neurosci Lett, 2010, 469(1):34-38. 
+
+3. If any part of this data is used for commercial applications, an explicit permission must be obtained from the copyright holders. Note also the following patent:
+Bakardjian, H., Martinez, P., Cichocki, A., Robust Multi-Command SSVEP-Based Brain-Machine Interface Without Training using Small Moving or Stationary Patterns, Japanese Patent #22385, 2008
+===================
+
+Signal processing note: The original data may contain substantial baseline shifts due to the DC properties of the Biosemi EEG system, as well as frequent eye blink artifacts for some subjects.
