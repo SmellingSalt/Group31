@@ -1,6 +1,0 @@
-%% Load trials of one human subject
-% Store all the SSVEP sessions of a person in one location and access 
-tic
-filePath='..\..\DataSet\Old BCI Data\fyp2016data\gdf\*.gdf';
-X=SubjectEEG(filePath);
-toc
