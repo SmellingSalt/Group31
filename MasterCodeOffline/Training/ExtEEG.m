@@ -1,3 +1,4 @@
+%% This function arranges the EEG data of a session into a cell structure
 function[X]= ExtEEG(s,h)
 
 %[s,h]=sload('record-[2012.07.06-19.06.14].gdf'); %Possible inputs {classes,s,h}

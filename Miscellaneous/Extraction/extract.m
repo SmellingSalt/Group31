@@ -1,4 +1,7 @@
-[s,h]=sload('record-[2012.07.06-19.06.14].gdf'); %Possible inputs {classes,s,h}
+[s,h]=sload(fullfile('..','..','DataSet', 'From the Internet', '4','subject01','record-[2012.07.06-19.02.16].gdf'));
+%Above command goes to the directory with the file and uses it to extract
+%EEG data
+
 events=h.EVENT.TYP(:,1); 
 samples=h.EVENT.POS(:,1);
 
