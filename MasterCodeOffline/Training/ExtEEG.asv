@@ -1,7 +1,7 @@
-%% This function 
-function[X]= ExtEEG(s,h)
+%% This function arranges the EEG data of a session into a cell structure
+%function[X]= ExtEEG(s,h)
 
-%[s,h]=sload('record-[2012.07.06-19.06.14].gdf'); %Possible inputs {classes,s,h}
+[s,h]=sload('..\..\DataSet\Old BCI Data\fyp2016data\ssvep-record-train-indra-3-[2016.03.31-23.42.46].gdf'); %Possible inputs {classes,s,h}
 events=h.EVENT.TYP(:,1); 
 samples=h.EVENT.POS(:,1);
 
