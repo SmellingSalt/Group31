@@ -1,7 +1,7 @@
-function [X]=SubjectEEG(filePath)
 %This function returns a structure that has all the EEG data of different
 %sessions stored in a 3D struct
 
+function [X]=SubjectEEG(filePath)
 %% File Location
 % This section gets the names of the gdf EEG files that are stored in a particular location giving the 'name' and 'path' cell structures
 % which holds the names of all the gdf files found in that path.
