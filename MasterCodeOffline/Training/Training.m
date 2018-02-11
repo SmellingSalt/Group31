@@ -7,3 +7,4 @@ filePath='..\..\DataSet\From the Internet\4\subject12\*.gdf';
 %C:\Users\Prashanth HC\Desktop\Group31\DataSet\From the Internet\4\subject12
 X=SubjectEEG(filePath); % extracts the eeg data from all gdf files in the folder
 C=EEGtoCov(X); % compute covariance matrix of each trail and store in corresponding location
+SubjectMean=CovMean(C); % returns the Cluster center/mean Covariance matrix of the subject

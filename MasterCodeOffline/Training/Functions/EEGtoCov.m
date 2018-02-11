@@ -1,9 +1,9 @@
-%This function computes the Covariance matrix from the data X
+%This function computes the Covariance matrix from the data X.
 %
-%Input data X is a CELL (class x trial x gdf file)
-%Covariance matrix is a cell (class x trialNo. x gdf)
+%Input data X is a CELL (class x trial x gdf file).
+%Covariance matrix is a cell (class x trialNo. x gdf).
 %Output of this function is the 'covariance matrix' - cell structure of the 
-% 'X data matrix' - cell structure
+% 'X data matrix' - cell structure.
 
 function [C]= EEGtoCov(X)
 %% Identify number of gdf files
