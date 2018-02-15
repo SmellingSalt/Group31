@@ -8,7 +8,7 @@
 %NOTE that the toolbox requires the input to be in matrix format
 %Hence conversion between cell-matrix type is necessary.
 
-function [ meanCov ] = CovMean( C )
+function [ meanCov Feat ] = CovMean( C )
 %% Data format adjustment and Mean Covariance Computation
 %size returns the (ClassLnth , No.ofTrials , No.ofFiles)
 Csize=size(C); 
@@ -47,6 +47,6 @@ for i=1:ClassLnth %Classes one by one
     %  opttransp, ld, geodesic, harmonic, geometric}
     % Less than 3 arguments signifies the calculated is the arithmatic mean
     meanCov{:,:,i} = mean_covariances(C2,'riemann');
-    
+    Feat=Tangent_space(C2);
 end
 
