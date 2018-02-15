@@ -11,10 +11,7 @@
 function [ meanCov, TanSpace ] = CovMean( C )
 %% Data format adjustment and Mean Covariance Computation
 %size returns the (ClassLnth , No.ofTrials , No.ofFiles)
-Csize=size(C); 
-ClassLnth=Csize(1);
-trials=Csize(2);
-files=Csize(3);
+[ClassLnth, trials, files]=size(C); 
 
 % i is used to access class
 % j is used to acces file
