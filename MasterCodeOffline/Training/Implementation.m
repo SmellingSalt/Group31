@@ -5,6 +5,7 @@
 clear
 clc
 TrainPath='..\..\DataSet\From the Internet\4\subject10\Training GDF\*.gdf';
+%TrainPath='C:\Users\Sawan Singh Mahara\Desktop\New folder1\*.gdf';
 [X]=SubjectEEG(TrainPath); % extracts the eeg data from all gdf files in the folder
 
 %% Covariance Matrix
@@ -12,12 +13,17 @@ TrainPath='..\..\DataSet\From the Internet\4\subject10\Training GDF\*.gdf';
 % clusters is also computed. The tangent space projection of the matrices
 % are also obtained
 C=EEGtoCov(X); % compute covariance matrix of each trail and store in corresponding location
-<<<<<<< HEAD
-[ClassMean, TanSpace]=CovMean(C); % returns the Cluster center/mean Covariance matrix of the subject
+[SubjectMean,feat]=CovMean(C); % returns the Cluster center/mean Covariance matrix of the subject
+
+%% Outlier Removal
+%This is a crude optimisation to remove outliers
+Co=outlierRemoval(C,'riemann','riemann');
+[ClassMean, TanSpace]=CovMean(Co); % returns the Cluster center/mean Covariance matrix of the subject
 
 %% Testing
 % This part tests the obtained centers with 8 trails for each class
 TestPath='..\..\DataSet\From the Internet\4\subject10\Testing GDF\*.gdf';
+%TestPath='C:\Users\Sawan Singh Mahara\Desktop\New folder1\*.gdf';
 test=SubjectEEG(TestPath);
 Ctest=EEGtoCov(test);
 [row,col,depth]=size(Ctest);
@@ -50,7 +56,6 @@ text(1:length(AccK),AccK,num2str(AccK'),'vert','bottom','horiz','center');
 title('Kullback Lieber Distance Test');
 grid minor;
 
-
 subplot(2,2,3);
 bar(x,AccL,0.25,'k')
 ylim([0 100]);
@@ -59,7 +64,6 @@ text(1:length(AccL),AccL,num2str(AccL'),'vert','bottom','horiz','center');
 title('Log-Euclidean Distance Test');
 grid minor;
 
-
 subplot(2,2,4);
 bar(x,Acc,0.25,'g')
 ylim([0 100]);
@@ -67,9 +71,4 @@ ylabel('Accuracy %');
 text(1:length(Acc),Acc,num2str(Acc'),'vert','bottom','horiz','center'); 
 title('Euclidean Distance Test');
 grid minor;
-suptitle('Covariance with Riemannian Mean')
-=======
-Co=outlierRemoval(C,'riemann','riemann');
-[SubjectMean feat]=CovMean(Co); % returns the Cluster center/mean Covariance matrix of the subject
-
->>>>>>> 9a2791267c16b9956bd5efcf267d7d1354e6680c
+suptitle('Outlier Removal and Riemannian Mean')

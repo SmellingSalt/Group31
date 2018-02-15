@@ -48,7 +48,7 @@ for i=1:ClassLnth %Classes one by one
     m=1;    
     for n=2:I
         dist(n) = distance(COV(:,:,n),C2,method_distance);
-        if (dist(n) < mu(n-1)+2.5*std(n-1))||(n<10);
+        if (dist(n) < mu(n-1)+2.5*std(n-1))||(n<10)
             m=m+1;
             alpha = min([m window]);
             mu(n) = ((alpha-1)/alpha)*mu(n-1)+(1/alpha)*dist(n);
