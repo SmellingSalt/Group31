@@ -12,6 +12,7 @@ TrainPath='..\..\DataSet\From the Internet\4\subject10\Training GDF\*.gdf';
 % clusters is also computed. The tangent space projection of the matrices
 % are also obtained
 C=EEGtoCov(X); % compute covariance matrix of each trail and store in corresponding location
+<<<<<<< HEAD
 [ClassMean, TanSpace]=CovMean(C); % returns the Cluster center/mean Covariance matrix of the subject
 
 %% Testing
@@ -67,3 +68,8 @@ text(1:length(Acc),Acc,num2str(Acc'),'vert','bottom','horiz','center');
 title('Euclidean Distance Test');
 grid minor;
 suptitle('Covariance with Riemannian Mean')
+=======
+Co=outlierRemoval(C,'riemann','riemann');
+[SubjectMean feat]=CovMean(Co); % returns the Cluster center/mean Covariance matrix of the subject
+
+>>>>>>> 9a2791267c16b9956bd5efcf267d7d1354e6680c
