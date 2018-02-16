@@ -79,7 +79,7 @@ for i=1:ClassLnth %Classes one by one
     
 %%    
 %Converting back from matrix to cell structure
-    r=1; % r is used to access the NxNxr matrix elements
+    r=1; % r is used to form a NxNxr matrix
     for p=1:fileNo
         for q=1:trialNo
             Co{i,q,p}=C3(:,:,r);
