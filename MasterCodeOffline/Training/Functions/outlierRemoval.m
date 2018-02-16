@@ -13,10 +13,7 @@
 function Co = outlierRemoval(Cin, method_mean, method_distance)
 %% Data format adjustment and Outlier Removal
 %size returns the (ClassLnth , No.ofTrials , No.ofFiles)
-Csize=size(Cin); 
-ClassLnth=Csize(1);
-trials=Csize(2);
-files=Csize(3);
+[ClassLnth, trials, files]=size(Cin);
 
 % i is used to access class
 % j is used to acces file
@@ -33,9 +30,8 @@ for i=1:ClassLnth %Classes one by one
     %Next convert the 'covariance matrix cell C1' to matrix 'COV' in the
     %format NxNxTotalNo.oftrials 
     % Where N is the No.of features/channels
-    C1size=size(C1);
-    fileNo=C1size(3);
-    trialNo=C1size(2);
+    [ClassNo, trialNo ,fileNo]=size(C1);
+
     r=1; % r is used to form a NxNxr matrix
     for p=1:fileNo
         for q=1:trialNo

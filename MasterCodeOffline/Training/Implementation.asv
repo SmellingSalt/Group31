@@ -20,7 +20,6 @@ C=EEGtoCov(X); % compute covariance matrix of each trail and store in correspond
 %This is a crude optimisation to remove outliers
 Co=outlierRemoval(C,'riemann','riemann');
 [ClassMean, TanSpace]=CovMean(Co); % returns the Cluster center/mean Covariance matrix of the subject
-                                   % after outlier removal
 
 %% Testing
 % This part tests the obtained centers with 8 trails for each class

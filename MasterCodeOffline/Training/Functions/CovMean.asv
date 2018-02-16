@@ -28,8 +28,9 @@ for i=1:ClassLnth %Classes one by one
     %Next convert the 'covariance matrix cell C1' to matrix in the
     %format NxNxTotalNo.oftrials 
     % Where N is the No.of features/channels
-    [ClassNo , trialNo, fileNo]=size(C1);
- 
+    [ , trialNo, fileNo]=size(C1);
+    fileNo=C1size(3);
+    trialNo=C1size(2);
     r=1; % r is used to form a NxNxr matrix
     for p=1:fileNo
         for q=1:trialNo
