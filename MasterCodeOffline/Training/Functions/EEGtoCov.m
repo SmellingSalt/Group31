@@ -8,7 +8,7 @@
 function [C]= EEGtoCov(X)
 %% Identify number of gdf files
 % find the number of gdf files in the folder/subject and store in gdfLnth
-gdfLnth=length(X);
+[~,~,gdfLnth]=size(X);
 
 %% Compute Covariance matrix cell
 % k is for accessing gdf file
