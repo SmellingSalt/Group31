@@ -1,0 +1,10 @@
+./~/
+matlab_scripts/eeglab*
+matlab_scripts/inexact*
+state.mat
+*_state.mat
+*.m~
+.DS_Store
+.dropbox
+__MAXOSX
+Icon*
