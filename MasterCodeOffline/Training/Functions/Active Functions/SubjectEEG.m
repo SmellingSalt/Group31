@@ -21,3 +21,4 @@ for i=1:length(name)
 end
 [len,bred,ht]=size(X);
 debug=X{randi(len),randi(bred),randi(ht)};
+debug=debug{:,:};
