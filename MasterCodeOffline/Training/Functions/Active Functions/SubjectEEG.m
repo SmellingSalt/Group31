@@ -1,7 +1,7 @@
 %This function returns a structure that has all the EEG data of different
 %sessions stored in a 3D struct
 
-function [X]=SubjectEEG(filePath)
+function [X,debug]=SubjectEEG(filePath)
 %% File Location
 % This section gets the names of the gdf EEG files that are stored in a particular location giving the 'name' and 'path' cell structures
 % which holds the names of all the gdf files found in that path.
@@ -19,4 +19,5 @@ for i=1:length(name)
     [s,h]=sload([path1, '\',name1]); %Loads the particular gdf file into s and h
     X{:,:,i}=ExtEEG(s,h);
 end
-
+[len,bred,ht]=size(X);
+debug=X{randi(len),randi(bred),randi(ht)};
