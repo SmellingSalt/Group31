@@ -7,7 +7,7 @@ clc
 TrainPath='..\..\DataSet\From the Internet\4\subject10\Training GDF\*.gdf';
 %TrainPath='..\..\DataSet\Old BCI Data\fyp2016data\gdf\Indra\*.gdf';
 %TrainPath='C:\Users\Sawan Singh Mahara\Desktop\New folder1\*.gdf';
-[X]=SubjectEEG(TrainPath); % extracts the eeg data from all gdf files in the folder
+[X,debug]=SubjectEEG(TrainPath); % extracts the eeg data from all gdf files in the folder
 
 %% Covariance Matrix
 % The covariance matrix is constructed here and then the center of the
@@ -20,7 +20,7 @@ C=EEGtoCov(X); % compute covariance matrix of each trail and store in correspond
 %% Outlier Removal
 %This is a crude optimisation to remove outliers
 Co=outlierRemoval(C,'riemann','riemann');
-[ClassMean, TanSpace]=CovMean(Co); % returns the Cluster center/mean Covariance matrix of the subject
+[ClassMean, TanSpace]=CovMean(C); % returns the Cluster center/mean Covariance matrix of the subject
                                    % after outlier removal
 
 %% Testing
