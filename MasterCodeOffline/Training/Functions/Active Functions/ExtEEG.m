@@ -49,3 +49,4 @@ ClssLnth=length(classes);  %Number of classes in data
     j=1;
     k=1;
   end
+X=Bank(X,1);
