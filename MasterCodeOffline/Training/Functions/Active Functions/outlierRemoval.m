@@ -9,8 +9,12 @@
 %
 %dependency is covariancetoolbox
 %NOTE that conversion between cell and matrix structures is performed
+%If using the dataset from the paper "Online SSVEP-based BCI using 
+%Riemannian geometry ;Emmanuel Kalunga, Sylvain Chevallier, 
+%Quentin Barthelemy, Karim Djouani, Eric Monacelli, Yskandar Hamam;
+%hal-01351623" then use use the standard deviation factor as 2.2
 
-function Co = outlierRemoval(Cin, method_mean, method_distance)
+function Co = OutlierRemoval(Cin, method_mean, method_distance)
 %% Data format adjustment and Outlier Removal
 %size returns the (ClassLnth , No.ofTrials , No.ofFiles)
 [ClassLnth, trials, files]=size(Cin);
@@ -56,7 +60,7 @@ for i=1:ClassLnth %Classes one by one
     m=1;    
     for n=2:I
         dist(n) = distance(COV(:,:,n),C2,method_distance);
-        if (dist(n) < mu(n-1)+2.5*std(n-1))||(n<10)
+        if (dist(n) < mu(n-1)+2.2*std(n-1))||(n<10)
             m=m+1;
             alpha = min([m window]);
             mu(n) = ((alpha-1)/alpha)*mu(n-1)+(1/alpha)*dist(n);
@@ -68,10 +72,10 @@ for i=1:ClassLnth %Classes one by one
             art(n) = 1;
         end
         C3(:,:,n) = C2;
-        thi(n) = mu(n)+2.5*std(n);
+        thi(n) = mu(n)+2.2*std(n);
     end
     
-    th = mu(n)+2.5*std(n);
+    th = mu(n)+2.2*std(n);
     
 %%    
 %Converting back from matrix to cell structure
