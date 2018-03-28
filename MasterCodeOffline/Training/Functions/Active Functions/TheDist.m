@@ -1,5 +1,6 @@
-%This function returns the calculated class, by returning the smallest
-%distance to mean, found
+%This function computes the class, by returning the smallest distance to mean, found
+%ClassMean is the collection of class centers
+%Crow is the cell structure with the unkown EEG Data
 function [class]= TheDist(ClassMean,Crow,type_dist)
 class=zeros(length(Crow),1);% initialising the class prediction to the number of classes
 temp=zeros(1,length(ClassMean));
