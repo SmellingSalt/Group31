@@ -9,7 +9,7 @@ for i=1:len
        [~, bred]=size(temp1); 
         
        for k=1:bred
-        temp1(:,k)=Band7(temp1(:,k));    %BandPass filtering each column of temp
+        temp1(:,k)=Band17(temp1(:,k));    %BandPass filtering each column of temp
         temp2(:,k)=Band13(temp2(:,k));   %BandPass filtering each column of temp
         temp3(:,k)=Band21(temp3(:,k));   %BandPass filtering each column of temp
         temp4(:,k)=Band0(temp4(:,k));   %BandPass filtering each column of temp
