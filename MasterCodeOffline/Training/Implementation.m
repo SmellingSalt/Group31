@@ -7,8 +7,10 @@ clc
 TrainPath='..\..\DataSet\From the Internet\4\subject10\Training GDF\*.gdf';
 %TrainPath='..\..\DataSet\Old BCI Data\fyp2016data\gdf\Indra\*.gdf';
 %TrainPath='C:\Users\Sawan Singh Mahara\Desktop\New folder1\*.gdf';
-[X,debug]=SubjectEEG(TrainPath); % extracts the eeg data from all gdf files in the folder
 
+tic
+[X,debug]=SubjectEEG(TrainPath); % extracts the eeg data from all gdf files in the folder
+toc
 %% Covariance Matrix
 % The covariance matrix is constructed here and then the center of the
 % clusters is also computed. The tangent space projection of the matrices
@@ -20,8 +22,7 @@ C=EEGtoCov(X); % compute covariance matrix of each trail and store in correspond
 %% Outlier Removal
 %This is a crude optimisation to remove outliers
 Co=outlierRemoval(C,'riemann','riemann');
-[ClassMean, TanSpace]=CovMean(C); % returns the Cluster center/mean Covariance matrix of the subject
-                                   % after outlier removal
+[ClassMean, TanSpace]=CovMean(C); % returns the Cluster center/mean Covariance matrix
 
 %% Testing
 % This part tests the obtained centers with 8 trails for each class
@@ -30,8 +31,8 @@ TestPath='..\..\DataSet\From the Internet\4\subject10\Testing GDF\*.gdf';
 %TestPath='C:\Users\Sawan Singh Mahara\Desktop\New folder1\*.gdf';
 test=SubjectEEG(TestPath);
 Ctest=EEGtoCov(test);
-[row,col,depth]=size(Ctest);
-ct=cell(row,col*depth,1);
+% [row,col,depth]=size(Ctest);
+% ct=cell(row,col*depth,1);
 %a={'riemann','kullback','logeuclid','opttransp','ld',''};
 AccR=ClassAccuracy(ClassMean, Ctest,'riemann');
 AccK=ClassAccuracy(ClassMean, Ctest,'kullback');
