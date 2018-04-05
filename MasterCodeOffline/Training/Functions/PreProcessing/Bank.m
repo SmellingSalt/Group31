@@ -1,7 +1,7 @@
 function[X]= Bank(X,snrboost)
-[len, bred, ~]=size(X);
+[len, bredx, ~]=size(X);
 for i=1:len
-    for j=1:bred
+    for j=1:bredx
        temp1=X{i,j};                     %Temp is one of the EEG Epochs, X{i,j}
        temp2=temp1;
        temp3=temp1;
