@@ -7,10 +7,7 @@ clc
 TrainPath='..\..\DataSet\From the Internet\4\subject10\Training GDF\*.gdf';
 %TrainPath='..\..\DataSet\Old BCI Data\fyp2016data\gdf\Indra\*.gdf';
 %TrainPath='C:\Users\Sawan Singh Mahara\Desktop\New folder1\*.gdf';
-
-tic
-[X,debug]=SubjectEEG(TrainPath); % extracts the eeg data from all gdf files in the folder
-toc
+[X,debug, timestamp]=SubjectEEG(TrainPath); % extracts the eeg data from all gdf files in the folder
 %% Covariance Matrix
 % The covariance matrix is constructed here and then the center of the
 % clusters is also computed. The tangent space projection of the matrices
