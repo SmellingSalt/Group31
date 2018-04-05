@@ -18,14 +18,30 @@ D=5;                                        %Number of Epochs
 window=[w, dn, D];                          %The window parameters
 
 [Xr, hand]=SubEEG(TrainPath,window);        %Xr is the raw EEG structure stored as D Epochs, hand is the time stamps of the epochs that are extracted.
-load('Variables/Xepochfilt.mat');           %Band pass filtered epoch data. Saved it since it takes really long to compute
+%% Filtered EEG Epoch
+% Spit the filtered Epoch so that it can be uploaded onto github. x1-x4 is
+% then recombined as Xfiter  again, after loading x1-x4.
 
-Cn=EEGtoCov(Xr);                             %Raw covariance matrix of the entire session
-Cf=EEGtoCov(X);                              %Band Pass Filtered data (Loaded as X)
+%Band pass filtered epoch data. Saved it since it takes really long to compute
+load('Variables/x1.mat');                   
+load('Variables/x2.mat');                   
+load('Variables/x3.mat');                   
+load('Variables/x4.mat');        
 
-load('Variables/ClassMean.mat');            %From Algorithm 1,2
-load('Variables/ClassMeanOutlier.mat');            %From Algorithm 1,2
-load('Variables/timestamp.mat');            %From Algorithm 1,2
+Xfilter{:,:,1}=x1;
+Xfilter{:,:,2}=x2;
+Xfilter{:,:,3}=x3;
+Xfilter{:,:,4}=x4;
+%% Covariances
+% Computing Covariance of data and also loading the different class centers
+% from offline algorithm, along with the timestamps of original EEG data from offline algorithm.
+
+Cn=EEGtoCov(Xr);                                    %Raw covariance matrix of the entire session
+Cf=EEGtoCov(Xfilter);                               %Band Pass Filtered data (Loaded as X)
+
+load('Variables/ClassMean.mat');                    %From Algorithm 1,2
+load('Variables/ClassMeanOutlier.mat');             %From Algorithm 1,2
+load('Variables/timestamp.mat');                    %From Algorithm 1,2
 
 
 %% Vector of Predictions
