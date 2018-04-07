@@ -4,22 +4,22 @@
 % X holds all the extracted EEG data
 clear
 clc
-TrainPath='..\..\DataSet\From the Internet\4\subject10\Training GDF\*.gdf';
+TrainPath='..\..\DataSet\From the Internet\4\subject10\Algo3\*.gdf';
 %TrainPath='..\..\DataSet\Old BCI Data\fyp2016data\gdf\Indra\*.gdf';
 %TrainPath='C:\Users\Sawan Singh Mahara\Desktop\New folder1\*.gdf';
-[X,debug, timestamp]=SubjectEEG(TrainPath); % extracts the eeg data from all gdf files in the folder
+[X,debug, timestamp]=SubjectEEG(TrainPath);                                 % extracts the eeg data from all gdf files in the folder
 %% Covariance Matrix
 % The covariance matrix is constructed here and then the center of the
 % clusters is also computed. The tangent space projection of the matrices
 % are also obtained
-C=EEGtoCov(X); % compute covariance matrix of each trail and store in corresponding location
-[SubjectMean,feat]=CovMean(C); % returns the Cluster center/mean Covariance matrix of the subject
-                               % before outlier removal
+C=EEGtoCov(X);                                                              % compute covariance matrix of each trail and store in corresponding location
+[SubjectMean,feat]=CovMean(C);                                              % returns the Cluster center/mean Covariance matrix of the subject
+                                                                            % before outlier removal
 
 %% Outlier Removal
 %This is a crude optimisation to remove outliers
 Co=OutlierRemoval(C,'riemann','riemann');
-[ClassMean, TanSpace]=CovMean(C); % returns the Cluster center/mean Covariance matrix
+[ClassMean, TanSpace]=CovMean(Co);                                           % returns the Cluster center/mean Covariance matrix
 
 %% Testing
 % This part tests the obtained centers with 8 trails for each class
@@ -44,9 +44,9 @@ x=categorical({'0 Hz','13Hz','17Hz','21Hz'});
 subplot(2,2,1);
 
 bar(x,AccR,0.25,'c')
-ylim([0 100]);              %Bar Graph Height
+ylim([0 100]);                                                              %Bar Graph Height
 ylabel('Accuracy %');           
-text(1:length(AccR),AccR,num2str(AccR'),'vert','bottom','horiz','center'); %Sets numbers on top of graph
+text(1:length(AccR),AccR,num2str(AccR'),'vert','bottom','horiz','center');  %Sets numbers on top of graph
 title('Riemann Distance Test');
 grid minor;
 
