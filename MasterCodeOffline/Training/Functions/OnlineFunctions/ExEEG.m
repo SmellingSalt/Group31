@@ -26,7 +26,7 @@ excess=excess-N;                                      %Excess is now just the di
 s=[s; zeros(excess,h.NS)];                            %Concatenating zeroes to the end, in all the NS number of channels
 N=length(s);                                          %Updating the length of 's'
 DD=1+(N-BigWindow)/(D*dn);                            %DD is the number of large windows the entire GDF File is divided into, again updated and will always be a whole number.
-                                    %Handle, returning the sample start and ends of all megaEpochs
+                                                      %Handle, returning the sample start and ends of all megaEpochs
 %% Filling the cell
 % D epochs in each Row, and DD number of Rows
   sampl1=1;                                           %Initialising start sample as sample number 1.
