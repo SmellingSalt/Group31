@@ -18,12 +18,11 @@ C=EEGtoCov(X);                                                              % co
 
 %% Outlier Removal
 %This is a crude optimisation to remove outliers
-Co=OutlierRemoval(C,'riemann','riemann');
+Co=OutlierRemoval(C,'riemann','riemann',SubjectMean);
 [ClassMean, TanSpace]=CovMean(Co);                                           % returns the Cluster center/mean Covariance matrix
-
 %% Testing
 % This part tests the obtained centers with 8 trails for each class
-TestPath='..\..\DataSet\From the Internet\4\subject10\Testing GDF\*.gdf';
+TestPath='..\..\DataSet\From the Internet\4\subject10\Algo3\*.gdf';
 %TestPath='..\..\DataSet\Old BCI Data\fyp2016data\gdf\Indra\*.gdf';
 %TestPath='C:\Users\Sawan Singh Mahara\Desktop\New folder1\*.gdf';
 test=SubjectEEG(TestPath);
