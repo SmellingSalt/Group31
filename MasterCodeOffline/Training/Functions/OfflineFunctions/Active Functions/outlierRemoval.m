@@ -14,7 +14,7 @@
 %Quentin Barthelemy, Karim Djouani, Eric Monacelli, Yskandar Hamam;
 %hal-01351623" then use use the standard deviation factor as 2.2
 
-function Co = OutlierRemoval(Cin, method_mean, method_distance)
+function Co = OutlierRemoval(Cin, method_mean, method_distance,SubjectMean)
 %% Data format adjustment and Outlier Removal
 %size returns the (ClassLnth , No.ofTrials , No.ofFiles)
 [ClassLnth, trials, files]=size(Cin);
@@ -46,7 +46,7 @@ for i=1:ClassLnth %Classes one by one
 %% Outlier Removal
     I = size(COV,3);
     %Consider the first one as the reference
-    C2=COV(:,:,1);
+    C2=SubjectMean{i};
     window = I; 
     % distances
     dist = zeros(I,1);
@@ -60,7 +60,7 @@ for i=1:ClassLnth %Classes one by one
     m=1;    
     for n=2:I
         dist(n) = distance(COV(:,:,n),C2,method_distance);
-        if (dist(n) < mu(n-1)+2.2*std(n-1))||(n<10)
+        if (dist(n) < mu(n-1)+2.5*std(n-1))||(n<10)
             m=m+1;
             alpha = min([m window]);
             mu(n) = ((alpha-1)/alpha)*mu(n-1)+(1/alpha)*dist(n);
@@ -75,7 +75,7 @@ for i=1:ClassLnth %Classes one by one
         thi(n) = mu(n)+2.2*std(n);
     end
     
-    th = mu(n)+2.2*std(n);
+    th = mu(n)+2.5*std(n);
     
 %%    
 %Converting back from matrix to cell structure
