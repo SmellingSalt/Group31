@@ -4,7 +4,7 @@
 % X holds all the extracted EEG data
 clear
 clc
-TrainPath='..\..\DataSet\From the Internet\4\subject10\Algo3\*.gdf';
+TrainPath='..\..\DataSet\From the Internet\4\subject10\Training GDF\*.gdf';
 %TrainPath='..\..\DataSet\Old BCI Data\fyp2016data\gdf\Indra\*.gdf';
 %TrainPath='C:\Users\Sawan Singh Mahara\Desktop\New folder1\*.gdf';
 [X,debug, timestamp]=SubjectEEG(TrainPath);                                 % extracts the eeg data from all gdf files in the folder
@@ -22,7 +22,7 @@ Co=OutlierRemoval(C,'riemann','riemann',SubjectMean);
 [ClassMean, TanSpace]=CovMean(Co);                                           % returns the Cluster center/mean Covariance matrix
 %% Testing
 % This part tests the obtained centers with 8 trails for each class
-TestPath='..\..\DataSet\From the Internet\4\subject10\Algo3\*.gdf';
+TestPath='..\..\DataSet\From the Internet\4\subject10\Testing GDF\*.gdf';
 %TestPath='..\..\DataSet\Old BCI Data\fyp2016data\gdf\Indra\*.gdf';
 %TestPath='C:\Users\Sawan Singh Mahara\Desktop\New folder1\*.gdf';
 test=SubjectEEG(TestPath);
