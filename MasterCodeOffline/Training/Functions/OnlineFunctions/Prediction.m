@@ -11,7 +11,11 @@ function [K]= Prediction(ClassMean,Ctest,a)
 for j=1:depth       
     for i=1:epochs
         Crow=Ctest(i,:,j);                    %Taking the entire row of the trials 'i', for GDF file 'j'
-        [K{i,1,j}, K{i,2,j},K{i,3,j} ]=TheDist(ClassMean,Crow,a);   %K holds the predicted class of each of the epochs in the GDF file
+        if isempty(Crow{1,1})
+            break;
+        else
+        [K{i,1,j}, K{i,2,j},K{i,3,j}]=TheDist(ClassMean,Crow,a);   %K holds the predicted class of each of the epochs in the GDF file
+        end
     end
     
 end
