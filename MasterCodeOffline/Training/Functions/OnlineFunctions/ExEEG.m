@@ -44,4 +44,4 @@ DD=1+(N-BigWindow)/(D*dn);                            %DD is the number of large
    end
    
   end
-%X=Bank(X,1);
+X=Bank(X,1);
