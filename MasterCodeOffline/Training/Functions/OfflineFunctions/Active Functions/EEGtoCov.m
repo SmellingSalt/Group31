@@ -20,7 +20,7 @@ for k=1:gdfLnth
     ClassLnth=size(X1); % ClassLnth stores the size of data in format (no.ofClasses,no.ofTrials)
     for i=1:ClassLnth(1) % getting the no. of classes by taking the first element of ClassLnth 
         for j=1:ClassLnth(2) % this runs for the no. of trials in the gdf file
-             C{i,j,k}=shcov(X1{i,j}); %Compute Covriance matrix of (class,trial) and store in C for all the gdf files in the folder
+             C{i,j,k}=cov(X1{i,j}); %Compute Covriance matrix of (class,trial) and store in C for all the gdf files in the folder
         end
  %   meanCov(:,:,i)= mean_covariances(C,'riemann');
     end
