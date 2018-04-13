@@ -1,5 +1,5 @@
 %% This function arranges the EEG data of a session into a cell structure
-function[X, timestamp]= ExtEEG(s,h)
+function[X, timestamp,classes]= ExtEEG(s,h,nbrClasses)
 
 %[s,h]=sload('..\..\DataSet\Old BCI Data\fyp2016data\gdf\Indra\ssvep-record-train-indra-3-[2016.03.31-23.42.46].gdf'); %Possible inputs {classes,s,h}
 %Above line is to debug, ignore it
@@ -27,9 +27,30 @@ clss=zeros(31,1); %Blank array holding 31 zeros
              clss(i,1)=template(i,1);       %Store that number/class in cls  
        end 
  end
-classes=clss(clss~=0);                      %All non zero classes are stored in the main variable, classes
-ClssLnth=length(classes);                   %Number of classes in data
  
+switch length(nbrClasses)
+    case 2
+        cl1=nbrClasses(1,1);
+        cl2=nbrClasses(1,2);
+        cdtemp=code(cl1,cl2);
+        cl1=cdtemp(1);
+        cl2=cdtemp(2);
+       classes=[clss(clss==cl1);clss(clss==cl2)];
+    case 3
+        cl1=nbrClasses(1,1);
+        cl2=nbrClasses(1,2);
+        cl3=nbrClasses(1,3);
+        cdtemp=code(cl1,cl2,cl3);
+        cl1=cdtemp(1);
+        cl2=cdtemp(2);
+        cl3=cdtemp(3);
+        classes=[clss(clss==cl1),clss(clss==cl2),clss(clss==cl3)];
+        classes=classes';
+    otherwise
+        classes=clss(clss~=0);                      %All non zero classes are stored in the main variable, classes
+       
+end     
+ ClssLnth=length(classes);                   %Number of classes in data
 %% Filling the cell
  % Classes in the columns and Trials on the rows
  j=1;
@@ -41,7 +62,7 @@ ClssLnth=length(classes);                   %Number of classes in data
             stpi=j+2;                       %Index of ending sample
             sampl1=samples(strti,:);        %Actual sample where class 'i' starts in data
             sampl2=samples(stpi,:);         %Actual sample where class 'i' ends in data
-            timestamp{i,k}=[sampl1,sampl2]./h.SampleRate; %Treying to save when the epochs occur in the EEG data
+            timestamp{i,k}=[sampl1,sampl2]./h.SampleRate; %Trying to save when the epochs occur in the EEG data
             X{i,k}=s(sampl1:sampl2,:);      %Extracting and storing the samples
             k=k+1;
         end
@@ -50,4 +71,4 @@ ClssLnth=length(classes);                   %Number of classes in data
     j=1;
     k=1;
   end
-X=Bank(X,1);
+%X=Bank(X,1);
