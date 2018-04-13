@@ -7,26 +7,27 @@ clc
 TrainPath='..\..\DataSet\From the Internet\4\subject10\Training GDF\*.gdf';
 %TrainPath='..\..\DataSet\Old BCI Data\fyp2016data\gdf\Indra\*.gdf';
 %TrainPath='C:\Users\Sawan Singh Mahara\Desktop\New folder1\*.gdf';
-[X,debug, timestamp]=SubjectEEG(TrainPath);                                 % extracts the eeg data from all gdf files in the folder
+nbrClasses=[13,21];
+[X,debug, timestamp,classes]=SubjectEEG(TrainPath,nbrClasses);              % extracts the eeg data from all gdf files in the folder
 %% Covariance Matrix
 % The covariance matrix is constructed here and then the center of the
 % clusters is also computed. The tangent space projection of the matrices
 % are also obtained
-C=EEGtoCov(X);                                                              % compute covariance matrix of each trail and store in corresponding location
+C=EEGtoCov(X,classes);                                                      % compute covariance matrix of each trail and store in corresponding location
 [SubjectMean,feat]=CovMean(C);                                              % returns the Cluster center/mean Covariance matrix of the subject
                                                                             % before outlier removal
 
 %% Outlier Removal
 %This is a crude optimisation to remove outliers
 Co=OutlierRemoval(C,'riemann','riemann',SubjectMean);
-[ClassMean, TanSpace]=CovMean(Co);                                           % returns the Cluster center/mean Covariance matrix
+[ClassMean, TanSpace]=CovMean(C);                                           % returns the Cluster center/mean Covariance matrix
 %% Testing
 % This part tests the obtained centers with 8 trails for each class
 TestPath='..\..\DataSet\From the Internet\4\subject10\Testing GDF\*.gdf';
 %TestPath='..\..\DataSet\Old BCI Data\fyp2016data\gdf\Indra\*.gdf';
 %TestPath='C:\Users\Sawan Singh Mahara\Desktop\New folder1\*.gdf';
-test=SubjectEEG(TestPath);
-Ctest=EEGtoCov(test);
+test=SubjectEEG(TestPath,nbrClasses);
+Ctest=EEGtoCov(test,classes);
 % [row,col,depth]=size(Ctest);
 % ct=cell(row,col*depth,1);
 %a={'riemann','kullback','logeuclid','opttransp','ld',''};
@@ -38,8 +39,10 @@ AccLd=ClassAccuracy(ClassMean, Ctest,'ld');
 Acc=ClassAccuracy(ClassMean, Ctest,'');
 
 %% Plotting
-% This section plots the accuracy data
-x=categorical({'0 Hz','13Hz','17Hz','21Hz'});
+% This section plots the accuracy data                  
+x=strtrim(cellstr(num2str(nbrClasses'))');                                  %Converts numbers to string
+x=strcat(x,'Hz');
+x=categorical(x);   
 subplot(2,2,1);
 
 bar(x,AccR,0.25,'c')
@@ -72,4 +75,4 @@ ylabel('Accuracy %');
 text(1:length(Acc),Acc,num2str(Acc'),'vert','bottom','horiz','center'); 
 title('Euclidean Distance Test');
 grid minor;
-suptitle('Outlier Removal and Riemannian Mean')
+suptitle('Classification Results')
