@@ -45,7 +45,7 @@ for i=1:ClassLnth %Classes one by one
     %  opttransp, ld, geodesic, harmonic, geometric}
     % Less than 3 arguments signifies the calculated is the arithmatic mean
     retard = retardmean(C2);
-    meanCov{:,:,i} = mean_covariances(C2,'riemann',{10e-7,retard});
+    meanCov{:,:,i} = mean_covariances(C2,'riemann',{10e-6,retard});
     TanSpace{:,:,i}=Tangent_space(C2);
 end
 
