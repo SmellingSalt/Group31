@@ -11,6 +11,8 @@
 
 %Mean0-Session21 is the collection of class centers for 0Hz,13Hz, 17Hz
 %and 21Hz respectively
+addpath('Functions');
+addpath('Variables');
 TrainPath='..\..\DataSet\From the Internet\4\subject10\Training GDF\*.gdf';
 w=2.6;                                      %Window Length
 dn=0.2;                                     %Window Spacing

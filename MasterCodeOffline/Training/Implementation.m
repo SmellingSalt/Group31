@@ -4,6 +4,8 @@
 % X holds all the extracted EEG data
 clear
 clc
+p1=genpath('Functions');
+addpath(p1);
 TrainPath='..\..\DataSet\From the Internet\4\subject10\Training GDF\*.gdf';
 %TrainPath='..\..\DataSet\Old BCI Data\fyp2016data\gdf\Indra\*.gdf';
 %TrainPath='C:\Users\Sawan Singh Mahara\Desktop\New folder1\*.gdf';
