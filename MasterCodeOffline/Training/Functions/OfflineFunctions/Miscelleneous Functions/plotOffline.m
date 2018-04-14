@@ -3,6 +3,8 @@ function[]= plotOffline(nbrClasses,ClassMean,Ctest,type,name)
 %Ctest as the centers and the test subjects respectively. The type will
 %allow the plot to display any pairings of 6 possible distances. The 'name'
 %will be the title of the figure.
+%If type is "all" then type gets modified in the code so that all the plots
+%are displayed.
 AccR=ClassAccuracy(ClassMean, Ctest,'riemann');
 AccK=ClassAccuracy(ClassMean, Ctest,'kullback');
 AccL=ClassAccuracy(ClassMean, Ctest,'logeuclid');
