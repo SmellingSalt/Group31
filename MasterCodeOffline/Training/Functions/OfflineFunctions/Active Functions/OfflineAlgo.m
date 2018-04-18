@@ -16,6 +16,6 @@ C=EEGtoCov(X,classes);                                                      % co
 
 %% Outlier Removal
 %This is a crude optimisation to remove outliers
-Co=OutlierRemoval(C,'riemann','riemann',SubjectMean);
+Co=OutlierRemoval(C,'riemann','',SubjectMean);
 [ClassMean, TanSpace]=CovMean(Co);                                           % returns the Cluster center/mean Covariance matrix
 end
