@@ -8,15 +8,15 @@
 %ClassMean is the collection of class centers
 %Crow is the cell structure with the unkown EEG Data
 function [Predictions,yes]= Prediction(ClassMean,Ctest,classes,a,windw)
- %% Raw Prediction
+%% Raw Prediction
 % Just applying offline algorithm and predicting
- [epochs,~]=size(Ctest);      
+ [epochs,EEPch]=size(Ctest);      
 for i=1:epochs
     Crow=Ctest(i,:);                                                   %Taking the entire row of the trials 'i', for GDF file 'j'
     if isempty(Crow{1,1})
         break;
     else
-        [K{i,1}, ~,~]=TheDist(ClassMean,Crow,a);                      %K holds the predicted class of each of the epochs in the GDF file
+        [K{i,1}, ~,~]=TheDist(ClassMean,Crow,a);             %K holds the predicted class of each of the epochs in the GDF file
     end
 end
 %% Large Epoch Prediction
@@ -25,7 +25,7 @@ end
 [len,bred]=size(K);
 for i=1:bred
     for j=1:len
-        [predic(j,i),yes(j,i)]=EpochPredictor(K(j,i));                %Predictions are stored rowwise per gdf file which is columnwise
+        [predic(j,i),yes(j,i)]=EpochPredictor(K(j,i));              %Predictions are stored rowwise per gdf file which is columnwise
     end
 end
 
