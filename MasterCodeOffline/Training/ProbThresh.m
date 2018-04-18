@@ -4,17 +4,23 @@
 % probability lies below 'threshold'. 'yes' is 1 if the number of maximums
 % is only 1 and if its probability is above the threshold.
 
-function [count,prob,yes]=ProbThresh(predictions,threshold)
+function [class,count,prob,yes]=ProbThresh(predictions,threshold)
 y=tabulate(predictions);
 [count, index]=max(y(:,2));
 checks=y(:,2);
 prob=y(index,3);
 checks=checks(checks==count);
-if length(checks)>1
-        yes=0;
+if length(checks)>1&&(y(index,3)/100)>=threshold
+    yes=0;
+    class=-2;
+elseif length(checks)>1&&(y(index,3)/100)<=threshold
+    yes=0;
+    class=-1;
 elseif ((y(index,3)/100)>=threshold)&&(length(checks)==1)
-        yes=1;
+    class=y(index,1);
+    yes=1;
 else
-        yes=0;
+    class=-1;
+    yes=0;
 end
 end

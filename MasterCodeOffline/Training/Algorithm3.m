@@ -13,9 +13,9 @@
 %and 21Hz respectively
 addpath('Functions');
 addpath('Variables');
-TrainPath='..\..\DataSet\From the Internet\4\subject10\Training GDF\*.gdf';
+TrainPath='..\..\DataSet\From the Internet\4\subject10\Algo3\*.gdf';
 w=2.6;                                      %Window Length
-dn=0.2;                                     %Window Spacing
+dn=0.15;                                     %Window Spacing
 D=5;                                        %Number of Epochs
 window=[w, dn, D];                          %The window parameters
 [Xr, hand]=SubEEG(TrainPath,window);        %Xr is the raw EEG structure stored as D Epochs, hand is the time stamps of the epochs that are extracted.
@@ -26,12 +26,12 @@ window=[w, dn, D];                          %The window parameters
 Cr=PlainEEG2Cov(Xr);                                    %Raw covariance matrix of the entire session
 nbrClasses=[0,13,17,21];
 [ClassMean,SubjectMean,debug,timestamp,classes,TanSpace]=OfflineAlgo(TrainPath,nbrClasses);
-time=timestamp(:,:,3);
+%time=timestamp(:,:,3);
 %Cr=OutlierRemoval(Cr,'riemann','riemann',ClassMean);
 
 %% Vector of Predictions
 %K holds the predictions of each epoch
-Krn=Prediction(ClassMean,Cr,'riemann');              %Predictions, of raw data
+[Krn,yes]=Prediction(SubjectMean,Cr,classes,'');              %Predictions, of raw data
 %Kfn=Prediction(ClassMean,Cf,'riemann');             %Predictions, of filtered data
 %Kfo=Prediction(ClassMeanOutlier,Cf,'riemann');      %Predictions, of filtered data using outlier removed mean
 %Kro=Prediction(SimpleCenterOut,Cr,'riemann');       %Predictions, of raw data using outlier removed mean

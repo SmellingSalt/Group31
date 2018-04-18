@@ -2,11 +2,12 @@
 % This function takes a single covariance matrix C and classifies it into
 % one of the classes in 'means'
 
-%'K' is the matrix holding predictions of GDF files in the rows
+%'K' is the matrix holding predictions of GDF files in the rows, the
+% columns hold predictions of each gdf file
 
 %ClassMean is the collection of class centers
 %Crow is the cell structure with the unkown EEG Data
-function [K]= Prediction(ClassMean,Ctest,a)
+function [predic,yes]= Prediction(ClassMean,Ctest,classes,a)
 [epochs,~,depth]=size(Ctest);
 for j=1:depth       
     for i=1:epochs
@@ -19,6 +20,9 @@ for j=1:depth
     end
     
 end
-end
-
-       
+[len,bred]=size(K);
+for i=1:bred
+    for j=1:len
+        [predic(j,i),yes(j,i)]=EpochPredictor(K(j,i),classes); %Predictions are stored rowwise per gdf file which is columnwise
+    end
+end       
