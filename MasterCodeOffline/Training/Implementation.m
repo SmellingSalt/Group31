@@ -25,7 +25,7 @@ addpath(p2);
 %'nbrClasses' is the vector of classes that we want to classify.
 
 TrainPath='..\..\DataSet\From the Internet\4\subject10\Training GDF\*.gdf';
-nbrClasses=[0,13,17,21];
+nbrClasses=[0,21];
 [ClassMean,SubjectMean,debug,timestamp,classes,TanSpace]=OfflineAlgo(TrainPath,nbrClasses);
 
 %% Testing
@@ -36,7 +36,7 @@ Ctest=EEGtoCov(test,classes);
 
 %% Plotting
 % This section plots the accuracy data calculated above.    
-type=["riemann"];
+type=["kullback"];
 plotOffline(nbrClasses,SubjectMean,Ctest,type,'Without Outlier Removal');
 figure;
 plotOffline(nbrClasses,ClassMean,Ctest,type,'With Outlier Removal');

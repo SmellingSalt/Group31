@@ -14,11 +14,11 @@ path={fileHandle.folder};                                                   %The
 % in X
 path1=path{1,1};                                                            %Since we are looking at only one folder at a time, this will not change
 
-for i=1:length(name)
-    name1=name{1,i};                                                        %Iterates over all the file names
-    [s,h]=sload([path1, '\',name1]);                                        %Loads the particular gdf file into s and h
-    [tempx,temph]=ExEEG(s,h,window);
-    X{:,:,i}=tempx;
-    hand{i,:}=temph;
-end
+
+name1=name{1,1};                                                        %Iterates over all the file names
+[s,h]=sload([path1, '\',name1]);                                        %Loads the particular gdf file into s and h
+[tempx,hand]=ExEEG(s,h,window);
+X{:,:,1}=tempx;
+
+
 

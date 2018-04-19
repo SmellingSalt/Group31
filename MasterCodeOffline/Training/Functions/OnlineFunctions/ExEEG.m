@@ -31,6 +31,8 @@ DD=1+(N-BigWindow)/(D*dn);                            %DD is the number of large
 % D epochs in each Row, and DD number of Rows
   sampl1=1;                                           %Initialising start sample as sample number 1.
   sampl2=w;                                           %Initialising the end of the first epoch as the length of the entire epoch
+  
+  hand=zeros(DD,2);
    for i=1:DD
        
    for j=1:D   
@@ -38,10 +40,16 @@ DD=1+(N-BigWindow)/(D*dn);                            %DD is the number of large
            break;
         end
        X{i,j}=s(sampl1:sampl2,:);
-       hand{i,j}=[sampl1,sampl2]./h.SampleRate;
+       if j==1
+       hand(i,1)=sampl1./h.SampleRate;
        sampl1=sampl1+dn;
        sampl2=sampl2+dn;
+       else
+       sampl1=sampl1+dn;
+       sampl2=sampl2+dn;
+       end
    end
+   hand(i,2)=sampl2./h.SampleRate;
    
   end
 %X=Bank(X,1);

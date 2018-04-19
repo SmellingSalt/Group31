@@ -5,16 +5,27 @@ function[]= plotOffline(nbrClasses,ClassMean,Ctest,type,name)
 %will be the title of the figure.
 %If type is "all" then type gets modified in the code so that all the plots
 %are displayed.
-AccR=ClassAccuracy(ClassMean, Ctest,'riemann');
-AccK=ClassAccuracy(ClassMean, Ctest,'kullback');
-AccL=ClassAccuracy(ClassMean, Ctest,'logeuclid');
-AccO=ClassAccuracy(ClassMean, Ctest,'opttransp');
-AccLd=ClassAccuracy(ClassMean, Ctest,'ld');
-Acc=ClassAccuracy(ClassMean, Ctest,'');
+[AccR, output1]=ClassAccuracy(ClassMean, Ctest,'riemann');
+[AccK, output2]=ClassAccuracy(ClassMean, Ctest,'kullback');
+[AccL, output3]=ClassAccuracy(ClassMean, Ctest,'logeuclid');
+[AccO, output4]=ClassAccuracy(ClassMean, Ctest,'opttransp');
+[AccLd, output5]=ClassAccuracy(ClassMean, Ctest,'ld');
+[Acc, output6]=ClassAccuracy(ClassMean, Ctest,'');
 
 x=strtrim(cellstr(num2str(nbrClasses'))');                                              %Converts numbers to string
 x=strcat(x,'Hz');
+xx=x;
 x=categorical(x);
+
+[len,bred,depth]=size(Ctest);
+target=zeros(len,bred*depth);
+p=1;
+for i=1:len
+    for j=1:bred*depth
+    target(i,p)=1;
+    p=p+1;
+    end
+end
 
 i=length(type);
 while i>0
@@ -67,6 +78,15 @@ while i>0
             text(1:length(AccR),AccR,num2str(AccR'),'vert','bottom','horiz','center');  %Sets numbers on top of graph
             title('Riemann Distance Test');
             grid minor;
+            suptitle(name)
+            
+            figure;
+            plotconfusion(target,output1,'Riemann Distace');
+            
+            xlabel('Prediction');
+            set(gca,'xticklabel',xx');
+            ylabel('Actual Class');
+            set(gca,'yticklabel',xx');
             VarName2=0;
             
         case 'kullback'
@@ -76,7 +96,17 @@ while i>0
             text(1:length(AccK),AccK,num2str(AccK'),'vert','bottom','horiz','center');
             title('Kullback Lieber Distance Test');
             grid minor;
+            figure;
+            suptitle(name)
+            
+            plotconfusion(target,output2,'Kullback Lieber Distance ');
+            
+            xlabel('Prediction');
+            set(gca,'xticklabel',xx');
+            ylabel('Actual Class');
+            set(gca,'yticklabel',xx');
             VarName2=0;
+       
         case 'logeuclid'
             bar(x,AccL,0.25,'k')
             ylim([0 100]);
@@ -84,7 +114,17 @@ while i>0
             text(1:length(AccL),AccL,num2str(AccL'),'vert','bottom','horiz','center');
             title('Log-Euclidean Distance Test');
             grid minor;
+            suptitle(name)
             
+            figure;
+            plotconfusion(target,output3,'Log-Euclidean Distance ');
+            
+            xlabel('Prediction');
+            set(gca,'xticklabel',xx');
+            ylabel('Actual Class');
+            set(gca,'yticklabel',xx');
+            VarName2=0;
+       
         case 'opttransp'
             bar(x,Acc,0.25,'g')
             ylim([0 100]);
@@ -92,6 +132,15 @@ while i>0
             text(1:length(AccO),Acc,num2str(AccO'),'vert','bottom','horiz','center');
             title('OP-Trans Test');
             grid minor;
+            suptitle(name)
+            
+            figure;
+            plotconfusion(target,output4,'OP-Trans Distance ');
+            
+            xlabel('Prediction');
+            set(gca,'xticklabel',xx');
+            ylabel('Actual Class');
+            set(gca,'yticklabel',xx');
             VarName2=0;
             
         case 'ld'
@@ -100,6 +149,16 @@ while i>0
             ylabel('Accuracy %');
             text(1:length(AccLd),Acc,num2str(AccLd'),'vert','bottom','horiz','center');
             title('Log-Euclidean Distance Test');
+            grid minor
+            suptitle(name)
+            
+            figure;
+            plotconfusion(target,output5,'Log-Euclidean Distance');
+            
+            xlabel('Prediction');
+            set(gca,'xticklabel',xx');
+            ylabel('Actual Class');
+            set(gca,'yticklabel',xx');
             grid minor;
             VarName2=0;
         case ''
@@ -109,6 +168,15 @@ while i>0
             text(1:length(Acc),Acc,num2str(Acc'),'vert','bottom','horiz','center');
             title('Euclidean Distance Test');
             grid minor;
+            suptitle(name)
+            
+            figure;
+            plotconfusion(target,output6,'Euclidean Distance');
+            
+            xlabel('Prediction');
+            set(gca,'xticklabel',xx');
+            ylabel('Actual Class');
+            set(gca,'yticklabel',xx');
             VarName2=0;
             
         otherwise
@@ -118,6 +186,8 @@ while i>0
 end
 
 
-suptitle(name)
+
+
+title(name)
 
 end

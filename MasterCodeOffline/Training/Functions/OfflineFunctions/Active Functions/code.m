@@ -31,7 +31,7 @@ for i=1:nargin
         case -2
             class(1,i)=-2;
         otherwise
-            continue;
+            error('Check the type of classes again');
     end
     
 end
