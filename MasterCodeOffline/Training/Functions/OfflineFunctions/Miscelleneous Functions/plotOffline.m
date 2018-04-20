@@ -83,7 +83,7 @@ while i>0
             figure;
             plotconfusion(target,output1,'Riemann Distace');
             
-            xlabel('Prediction');
+            xlabel('Prediction (Riemann)');
             set(gca,'xticklabel',xx');
             ylabel('Actual Class');
             set(gca,'yticklabel',xx');
@@ -101,7 +101,7 @@ while i>0
             
             plotconfusion(target,output2,'Kullback Lieber Distance ');
             
-            xlabel('Prediction');
+            xlabel('Prediction (Kullback)');
             set(gca,'xticklabel',xx');
             ylabel('Actual Class');
             set(gca,'yticklabel',xx');
@@ -119,7 +119,7 @@ while i>0
             figure;
             plotconfusion(target,output3,'Log-Euclidean Distance ');
             
-            xlabel('Prediction');
+            xlabel('Prediction (Logeuclid)');
             set(gca,'xticklabel',xx');
             ylabel('Actual Class');
             set(gca,'yticklabel',xx');
@@ -137,7 +137,7 @@ while i>0
             figure;
             plotconfusion(target,output4,'OP-Trans Distance ');
             
-            xlabel('Prediction');
+            xlabel('Prediction (Opttransp)');
             set(gca,'xticklabel',xx');
             ylabel('Actual Class');
             set(gca,'yticklabel',xx');
@@ -155,7 +155,7 @@ while i>0
             figure;
             plotconfusion(target,output5,'Log-Euclidean Distance');
             
-            xlabel('Prediction');
+            xlabel('Prediction (Ld)');
             set(gca,'xticklabel',xx');
             ylabel('Actual Class');
             set(gca,'yticklabel',xx');
@@ -173,7 +173,7 @@ while i>0
             figure;
             plotconfusion(target,output6,'Euclidean Distance');
             
-            xlabel('Prediction');
+            xlabel('Prediction (Euclidean)');
             set(gca,'xticklabel',xx');
             ylabel('Actual Class');
             set(gca,'yticklabel',xx');
