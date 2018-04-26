@@ -1,5 +1,5 @@
 %%Labeler
-% This function takes the timestamps and actual time hadle and labels the
+% This function takes the timestamps and actual time handle and labels the
 % entire EEG session as belonging to a particular class.
 function[target, K]=Labeler(timestamp,hand,classes,Krn)
 time=timestamp{:,:};
@@ -18,7 +18,7 @@ for i=1:len
                 for k=1:length(hand)
                     if hand(k,1)<=high&&hand(k,1)>=low
                         target(k-1,1)=33024;
-         
+                        
                     else
                         continue;
                     end
@@ -28,7 +28,7 @@ for i=1:len
                 for k=1:length(hand)
                     if hand(k,1)<=high&&hand(k,1)>=low
                         target(k-1,1)=33025;
-          
+                        
                     else
                         continue;
                     end
@@ -38,7 +38,7 @@ for i=1:len
                 for k=1:length(hand)
                     if hand(k,1)<=high&&hand(k,1)>=low
                         target(k-1,1)=33026;
-          
+                        
                     else
                         continue;
                     end
@@ -48,7 +48,7 @@ for i=1:len
                 for k=1:length(hand)
                     if hand(k,1)<=high&&hand(k,1)>=low
                         target(k-1,1)=33027;
-            
+                        
                     else
                         continue;
                     end
@@ -63,7 +63,7 @@ end
 if isempty(classes(classes==33024))
     target(target==0)=-1;
 else
-     target(target==0)=-1;
+    target(target==0)=-1;
 end
 
 K=Krn(target~=-1);
