@@ -5,18 +5,18 @@
 % is only 1 and if its probability is above the threshold.
 
 function [class,count,prob,yes]=ProbThresh(predictions,threshold)
-y=tabulate(predictions);
+y=tabulate(predictions);                                                   %This is where the frequency of occurence is calculated
 [count, index]=max(y(:,2));
 checks=y(:,2);
 prob=y(index,3);
 checks=checks(checks==count);
-if length(checks)>1&&(y(index,3)/100)>=threshold
-    yes=0;
+if length(checks)>1&&(y(index,3)/100)>=threshold                           %Multiple maximums having same value
+    yes=0;                                                                  
     class=-2;
-elseif length(checks)>1&&(y(index,3)/100)<=threshold
+elseif length(checks)>1&&(y(index,3)/100)<=threshold                       %Lesser than the threshold
     yes=0;
     class=-1;
-elseif ((y(index,3)/100)>=threshold)&&(length(checks)==1)
+elseif ((y(index,3)/100)>=threshold)&&(length(checks)==1)                  
     class=y(index,1);
     yes=1;
 else
