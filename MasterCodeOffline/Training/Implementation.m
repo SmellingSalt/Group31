@@ -36,7 +36,8 @@ Ctest=EEGtoCov(test,classes);
 
 %% Plotting
 % This section plots the accuracy data calculated above.    
-type=["riemann","kullback", "logeuclid", "opttransp", "ld", ""];
+type=["riemann"];
+
 plotOffline(nbrClasses,SubjectMean,Ctest,type,'Without Outlier Removal');
 plotConfuse(nbrClasses,ClassMean,Ctest,type,'Confusion Matrix');
 %plotOffline(nbrClasses,ClassMean,Ctest,type,'With Outlier Removal');
