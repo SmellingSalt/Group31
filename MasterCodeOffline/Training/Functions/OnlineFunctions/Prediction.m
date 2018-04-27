@@ -53,21 +53,21 @@ end
 % Replacing Hold with the previous value and replacing noise with class
 % 0 if it is there and no SSVEP If it isn't. Also, -10 is hold
 
-Predictions(1,1)=classes(1,1);
-for i=2:length(Predictions)
-    switch Predictions(i,1)
-        case -10
-            Predictions(i,1)=Predictions(i-1,1);
-        case -1
-             Predictions(i,1)=Predictions(i-1,1);
-%             if ~isempty(classes(classes==33024))
-%                 Predictions(i,1)=classes(1,1);
-%             else
-%                 Predictions(i,1)=Predictions(i-1,1);
-%             end
-        otherwise
-            continue;
-    end
-end
+ Predictions(1,1)=classes(1,1);
+% for i=2:length(Predictions)
+%     switch Predictions(i,1)
+%         case -10
+%             Predictions(i,1)=Predictions(i-1,1);
+%         case -1
+%              Predictions(i,1)=Predictions(i-1,1);
+% %             if ~isempty(classes(classes==33024))
+% %                 Predictions(i,1)=classes(1,1);
+% %             else
+% %                 Predictions(i,1)=Predictions(i-1,1);
+% %             end
+%         otherwise
+%             continue;
+%     end
+% end
 
 end

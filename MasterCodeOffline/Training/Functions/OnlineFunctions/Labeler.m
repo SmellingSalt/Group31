@@ -66,6 +66,6 @@ else
     target(target==0)=-1;
 end
 
-K=Krn(target~=-1);
-target=target(target~=-1);
+ K=Krn;%(target~=-1);
+% target=target(target~=-1);
 end
