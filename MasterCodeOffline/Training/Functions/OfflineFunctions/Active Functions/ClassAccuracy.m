@@ -24,4 +24,3 @@ for i=1:length(ClassMean)
     hits=0;                                 %Resetting hits for next class
 end
 acc=acc*100;
-
