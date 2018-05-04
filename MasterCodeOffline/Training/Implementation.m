@@ -25,6 +25,7 @@ addpath(p2);
 %'nbrClasses' is the vector of classes that we want to classify.
 
 TrainPath='..\..\DataSet\From the Internet\4\subject10\Training GDF\*.gdf';
+TRAIN=['..\..\DataSet\From the Internet',14,'\4\subject10\Training GDF\*.gdf'];
 nbrClasses=[0,13,17,21];
 [ClassMean,SubjectMean,debug,timestamp,classes,TanSpace]=OfflineAlgo(TrainPath,nbrClasses);
 
