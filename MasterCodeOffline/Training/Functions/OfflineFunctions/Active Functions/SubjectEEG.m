@@ -16,7 +16,7 @@ path1=path{1,1}; %Since we are looking at only one folder at a time, this will n
 
 for i=1:length(name)
     name1=name{1,i};    %Iterates over all the file names
-    [s,h]=sload([path1, '\',name1]); %Loads the particular gdf file into s and h
+    [s,h]=mysload([path1, '\',name1]); %Loads the particular gdf file into s and h
     [temp1, temp2,classes]=ExtEEG(s,h,nbrClasses);
     X{:,:,i}=temp1;
     timestamp{:,:,i}=temp2;
